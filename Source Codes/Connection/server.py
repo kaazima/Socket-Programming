@@ -1,0 +1,13 @@
+import socket
+serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+serversocket.bind(('127.0.0.1', 25000))
+serversocket.listen()
+print("Server is listening....")
+connection, address = serversocket.accept()
+print(connection)
+print(address)
+print("Connection has been established")
+msg = connection.recv(1024)
+print(msg.decode())
+connection.close()
+serversocket.close()
